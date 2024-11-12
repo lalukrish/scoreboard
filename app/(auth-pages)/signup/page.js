@@ -52,7 +52,7 @@ const SignupPage = () => {
       setSnackbarMessage("Signup successful!");
       setSnackbarSeverity("success");
       setOpenSnackbar(true);
-      router.push("/signin");
+      router.push("/");
     } catch (error) {
       setSnackbarMessage("Signup failed. Please try again.");
       setSnackbarSeverity("error");
@@ -159,7 +159,7 @@ const SignupPage = () => {
           </Formik>
 
           <Typography variant="body2" className="text-center mt-6">
-            <Link href="/signin" className="text-white text-lg underline">
+            <Link href="/" className="text-white text-lg underline">
               Already have an account? Login
             </Link>
           </Typography>

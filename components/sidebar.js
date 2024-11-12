@@ -50,7 +50,7 @@ const AppBar = () => {
 
   const handleLogout = () => {
     localStorage.clear();
-    router.push("/signin");
+    router.push("/");
   };
 
   const menuItems = [
