@@ -45,7 +45,7 @@ const SignupPage = () => {
   const handleSignup = async (values) => {
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_POINT}/create-user`,
+        `${process.env.NEXT_PUBLIC_API_POINT}/user/create-user`,
         values
       );
 

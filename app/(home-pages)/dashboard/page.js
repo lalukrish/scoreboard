@@ -53,7 +53,7 @@ const Page = () => {
   const fetchUsers = async () => {
     try {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_POINT}/get-all-users`,
+        `${process.env.NEXT_PUBLIC_API_POINT}/user/get-all-users`,
         {
           params: { page: page + 1, limit: rowsPerPage, search: searchQuery },
           // headers: {
@@ -67,7 +67,7 @@ const Page = () => {
         setTotalUsers(response.data.totalUsers);
 
         const fullListResponse = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_POINT}/get-all-users`,
+          `${process.env.NEXT_PUBLIC_API_POINT}/user/get-all-users`,
           {
             params: { page: 1, limit: 1000 },
             // headers: {
@@ -106,7 +106,7 @@ const Page = () => {
     const userToUpdate = users[index];
     try {
       await axios.put(
-        `${process.env.NEXT_PUBLIC_API_POINT}/update-score/${userToUpdate._id}`,
+        `${process.env.NEXT_PUBLIC_API_POINT}/user/update-score/${userToUpdate._id}`,
         {
           score: newScore,
         }
@@ -128,7 +128,7 @@ const Page = () => {
   const handleDelete = async () => {
     try {
       await axios.delete(
-        `${process.env.NEXT_PUBLIC_API_POINT}/delete-user/${userToDelete}`
+        `${process.env.NEXT_PUBLIC_API_POINT}/user/delete-user/${userToDelete}`
       );
       setSnackbarMessage("User deleted successfully");
       setSnackbarSeverity("success");

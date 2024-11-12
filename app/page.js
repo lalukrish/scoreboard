@@ -38,7 +38,7 @@ const page = () => {
   const handleLogin = async (values) => {
     try {
       const response = await axios
-        .post(`${process.env.NEXT_PUBLIC_API_POINT}/user-login`, values)
+        .post(`${process.env.NEXT_PUBLIC_API_POINT}/user/user-login`, values)
         .then((response) => {
           console.log("object", response);
           localStorage.setItem("token", response.data.token);
