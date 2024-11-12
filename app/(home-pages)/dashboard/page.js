@@ -34,8 +34,20 @@ const Page = () => {
   const [userToDelete, setUserToDelete] = useState(null);
   const [loggedInUserRank, setLoggedInUserRank] = useState(null);
 
-  const role = localStorage.getItem("role");
-  const userId = localStorage.getItem("USER_ID");
+  // let role=""
+  const [role, setRole] = useState(null);
+  const [userId, setUserId] = useState(null);
+  let roleUser = "";
+  let userIdUser = "";
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      // Safe to use localStorage on the client-side
+      roleUser = window.localStorage.getItem("role");
+      userIdUser = window.localStorage.getItem("USER_ID");
+      setRole(roleUser ?? "");
+      setUserId(userIdUser ?? "");
+    }
+  }, []);
 
   const fetchUsers = async () => {
     try {

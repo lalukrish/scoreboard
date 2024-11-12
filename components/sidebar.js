@@ -60,8 +60,22 @@ const AppBar = () => {
     { title: "Company", submenu: [] },
   ];
 
-  const user_name = localStorage.getItem("user_name");
-  const userId = localStorage.getItem("userId");
+  // const user_name = localStorage.getItem("user_name");
+  // const userId = localStorage.getItem("userId");
+
+  const [name, setName] = useState(null);
+  const [userId, setUserId] = useState(null);
+  let roleUser = "";
+  let userIdUser = "";
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      // Safe to use localStorage on the client-side
+      roleUser = window.localStorage.getItem("role");
+      userIdUser = window.localStorage.getItem("userId");
+      setName(roleUser ?? "");
+      setUserId(userIdUser ?? "");
+    }
+  }, []);
 
   return (
     <Grid>
@@ -113,7 +127,7 @@ const AppBar = () => {
             <Avatar
               sx={{ cursor: "pointer", bgcolor: "#075985" }}
               onClick={handleAvatarClick}
-              alt={user_name}
+              alt={name}
               // src={"/avatar"}
             />
             <Menu
@@ -140,12 +154,12 @@ const AppBar = () => {
             >
               <>
                 <Avatar
-                  alt={user_name}
+                  alt={name}
                   // src={avatar}
                   sx={{ width: 56, height: 56 }}
                 />
                 <Typography variant="body2" sx={{ fontWeight: "bold" }}>
-                  {user_name}
+                  {name}
                 </Typography>
                 <Typography variant="body2" color="textSecondary">
                   {userId}
