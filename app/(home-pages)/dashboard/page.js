@@ -37,24 +37,28 @@ const Page = () => {
   // let role=""
   const [role, setRole] = useState(null);
   const [userId, setUserId] = useState(null);
+
   let roleUser = "";
   let userIdUser = "";
+  // let tokenUser = "";
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // Safe to use localStorage on the client-side
       roleUser = window.localStorage.getItem("role");
       userIdUser = window.localStorage.getItem("USER_ID");
+
       setRole(roleUser ?? "");
       setUserId(userIdUser ?? "");
     }
   }, []);
-
   const fetchUsers = async () => {
     try {
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_API_POINT}/get-all-users`,
         {
           params: { page: page + 1, limit: rowsPerPage, search: searchQuery },
+          // headers: {
+          //   Authorization: `Bearer ${token}`,
+          // },
         }
       );
 
@@ -66,6 +70,9 @@ const Page = () => {
           `${process.env.NEXT_PUBLIC_API_POINT}/get-all-users`,
           {
             params: { page: 1, limit: 1000 },
+            // headers: {
+            //   Authorization: `Bearer ${token}`,
+            // },
           }
         );
         const sortedUsers = fullListResponse.data.users.sort(
