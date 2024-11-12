@@ -1,3 +1,12 @@
+# if installation having any dependency circular error,please use -f (force flag) for smooth working.
+
+# credential : admin
+
+admin@gmail.com
+Test@123
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
