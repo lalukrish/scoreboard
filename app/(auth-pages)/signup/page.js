@@ -49,12 +49,16 @@ const SignupPage = () => {
         values
       );
 
+      console.log("object->", response);
       setSnackbarMessage("Signup successful!");
       setSnackbarSeverity("success");
       setOpenSnackbar(true);
       router.push("/");
     } catch (error) {
-      setSnackbarMessage("Signup failed. Please try again.");
+      const errorMessage =
+        error.response?.data?.error || "Signup failed. Please try again.";
+
+      setSnackbarMessage(errorMessage);
       setSnackbarSeverity("error");
       setOpenSnackbar(true);
     }
