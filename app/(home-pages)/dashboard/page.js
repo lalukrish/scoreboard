@@ -40,7 +40,7 @@ const Page = () => {
   const fetchUsers = async () => {
     try {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_POINT}/user/get-all-users`,
+        `${process.env.NEXT_PUBLIC_API_POINT}/get-all-users`,
         {
           params: { page: page + 1, limit: rowsPerPage, search: searchQuery },
         }
@@ -51,7 +51,7 @@ const Page = () => {
         setTotalUsers(response.data.totalUsers);
 
         const fullListResponse = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_POINT}/user/get-all-users`,
+          `${process.env.NEXT_PUBLIC_API_POINT}/get-all-users`,
           {
             params: { page: 1, limit: 1000 },
           }
@@ -109,7 +109,7 @@ const Page = () => {
   const handleDelete = async () => {
     try {
       await axios.delete(
-        `${process.env.NEXT_PUBLIC_API_POINT}/user/delete-user/${userToDelete}`
+        `${process.env.NEXT_PUBLIC_API_POINT}/delete-user/${userToDelete}`
       );
       setSnackbarMessage("User deleted successfully");
       setSnackbarSeverity("success");
@@ -142,7 +142,7 @@ const Page = () => {
             </Typography>
           </Box>
         )}
-        {users.map((user, index) => (
+        {users?.map((user, index) => (
           <Paper key={user._id} sx={{ p: 2, mt: 2, position: "relative" }}>
             <Box
               display="flex"
