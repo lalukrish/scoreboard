@@ -49,7 +49,7 @@ const SignupPage = () => {
         values
       );
 
-      console.log("object->", response);
+      //   console.log("object->", response);
       setSnackbarMessage("Signup successful!");
       setSnackbarSeverity("success");
       setOpenSnackbar(true);

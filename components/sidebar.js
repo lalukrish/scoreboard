@@ -102,7 +102,9 @@ const AppBar = () => {
                 fontSize: { md: 48, xs: 32 },
               }}
             >
-              <span style={{ color: "#059212" }}>ScoreBoard</span>
+              <span style={{ color: "#059212", fontStyle: "italic" }}>
+                Writeup100
+              </span>
             </Typography>
           </Box>
         </Box>
